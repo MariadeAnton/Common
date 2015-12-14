@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Microsoft.Dnx.Runtime.Common.CommandLine
+namespace Microsoft.Extensions.Internal
 {
     internal class CommandParsingException : Exception
     {

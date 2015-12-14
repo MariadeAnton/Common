@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Dnx.Runtime.Common.CommandLine
+namespace Microsoft.Extensions.Internal
 {
     internal class CommandLineApplication
     {
@@ -32,16 +32,16 @@ namespace Microsoft.Dnx.Runtime.Common.CommandLine
         public string FullName { get; set; }
         public string Syntax { get; set; }
         public string Description { get; set; }
-        public List<CommandOption> Options { get; private set; }
+        public readonly List<CommandOption> Options;
         public CommandOption OptionHelp { get; private set; }
         public CommandOption OptionVersion { get; private set; }
-        public List<CommandArgument> Arguments { get; private set; }
-        public List<string> RemainingArguments { get; private set; }
+        public readonly List<CommandArgument> Arguments;
+        public readonly List<string> RemainingArguments;
         public bool IsShowingInformation { get; protected set; }  // Is showing help or version?
         public Func<int> Invoke { get; set; }
         public Func<string> LongVersionGetter { get; set; }
         public Func<string> ShortVersionGetter { get; set; }
-        public List<CommandLineApplication> Commands { get; private set; }
+        public readonly List<CommandLineApplication> Commands;
 
         public CommandLineApplication Command(string name, Action<CommandLineApplication> configuration,
             bool throwOnUnexpectedArg = true)
@@ -274,8 +274,8 @@ namespace Microsoft.Dnx.Runtime.Common.CommandLine
         }
 
         public CommandOption VersionOption(string template,
-                                           string shortFormVersion,
-                                           string longFormVersion = null)
+            string shortFormVersion,
+            string longFormVersion = null)
         {
             if (longFormVersion == null)
             {

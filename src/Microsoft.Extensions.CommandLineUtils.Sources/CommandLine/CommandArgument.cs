@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.Dnx.Runtime.Common.CommandLine
+namespace Microsoft.Extensions.Internal
 {
     internal class CommandArgument
     {

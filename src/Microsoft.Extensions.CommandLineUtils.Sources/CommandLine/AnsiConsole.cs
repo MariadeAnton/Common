@@ -4,7 +4,7 @@
 using System;
 using System.IO;
 
-namespace Microsoft.Dnx.Runtime.Common.CommandLine
+namespace Microsoft.Extensions.Internal
 {
     internal class AnsiConsole
     {
